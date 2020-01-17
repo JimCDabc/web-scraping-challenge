@@ -8,7 +8,7 @@ def init_browser():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
-def scrape_mars() :
+def scrapeMarsInfo() :
     # initialize the beautiful soup browser
     browser = init_browser()
     
@@ -63,6 +63,7 @@ def scrapeMarsFeaturedImage(browser) :
     print("Scraping Mars Featured Image ...")
         
     # Visit the url for JPL Featured Space Image
+    jpl_base_url= 'https://www.jpl.nasa.gov'
     jplMarsImages_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(jplMarsImages_url)
     time.sleep(1)
@@ -81,7 +82,7 @@ def scrapeMarsFeaturedImage(browser) :
  
     #  find the image url for the current Featured Mars Image
     featured_img = featured[0].find('div', class_='fancybox-inner')
-    featured_image_url = featured_img.img['src']
+    featured_image_url = jpl_base_url + featured_img.img['src']
     
     #  find the image title for the current Featured Mars Image
     featured_image_title = featured[0].find('div', class_='fancybox-title').contents[0]
@@ -107,7 +108,8 @@ def scrapeMarsWeather(browser) :
     soup = BeautifulSoup(html, 'html.parser')
     
     # results are returned as an iterable list
-    tweets= soup.find_all('div', class_="tweet")
+    #tweets= soup.find_all('div', class_="tweet")
+    tweets= soup.find_all('div', class_="js-tweet-text-container")
     
     mars_weather = tweets[0].p.contents[0]
     weatherDict = { "mars_weather" : mars_weather}
@@ -124,12 +126,15 @@ def scrapeMarsFacts(browser) :
     factsTables = pd.read_html(marsFacts_url)
     
     # clean facts table in Pandas 
-    df = factsTables[0]
+    df = factsTables[0].copy()
     df.columns = ['parameter', 'value']
     df.set_index('parameter', inplace=True)
+    df.columns.name = df.index.name
+    df.index.name = None
+
     
     # generate and clean up html facts table
-    html_factsTable = df.to_html()
+    html_factsTable = df.to_html(classes="data")
     html_factsTable = html_factsTable.replace('\n', '')
 
     # create a dict to return
@@ -180,4 +185,4 @@ def scrapeHemisphereImages(browser) :
     return hemisImgDict
 
 #test the scraping
-scrape_mars()
+#scrapeMarsInfo()

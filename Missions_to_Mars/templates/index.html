@@ -5,21 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Costa Rica Weather</title>
+  <title>Missions to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>Visit the...</h1>
-      <p>Beach. Rainforest. Volcano. Tree House. Sloths.</p>
+      <h1>Visit Mars...</h1>
+      <p>Sand. Craters. Rovers. Canals. Ice. Alien Bases. Martians...</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
     </div>
-    <img src="{{ vacation.sloth_img }}" alt="Sloth">
-    <h2>The typical weather in Costa Rica is:</h2>
-    <h3>Max Temp: {{ vacation.max_temp }}</h3>
-    <h3>Min Temp: {{ vacation.min_temp }}</h3>
+    <img src="{{ mars.featured_image_url }}" alt="{{ mars.featured_image_title}}">
+    {{ mars.featured_image_title}}
+    </img>
+
+    <h3>The news from Mars today is:</h3>
+    <h4>{{ mars.news_title }}</h4>
+    <h5>{{ mars.news_date }}</h3>
+    <p>{{ mars.news_p }}</p>
+
+    <h5>Mars Weather</h5>
+    <p>{{ mars.mars_weather }}</p>
+
+    <h5>Mars Facts</h5>
+    {{ mars.html_factsTable | safe }}
+
+    <h5>Mars Hemisphere Images</h5>
+    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
+    {{ mars.hemisphere_image_urls[0].title }}
+    </img>
+
+    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
+    {{ mars.hemisphere_image_urls[1].title }}
+    </img>
+
+    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
+    {{ mars.hemisphere_image_urls[2].title }}
+    </img>
+
+    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
+    {{ mars.hemisphere_image_urls[3].title }}
+    </img>
+
   </div>
   </div>
 </body>
