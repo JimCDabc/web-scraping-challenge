@@ -6,49 +6,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Missions to Mars</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div class="container">
     <div class="jumbotron text-center">
       <h1>Visit Mars...</h1>
       <p>Sand. Craters. Rovers. Canals. Ice. Alien Bases. Martians...</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
     </div>
-    <img src="{{ mars.featured_image_url }}" alt="{{ mars.featured_image_title}}">
-    {{ mars.featured_image_title}}
-    </img>
-
-    <h3>The news from Mars today is:</h3>
-    <h4>{{ mars.news_title }}</h4>
-    <h5>{{ mars.news_date }}</h3>
-    <p>{{ mars.news_p }}</p>
-
-    <h5>Mars Weather</h5>
-    <p>{{ mars.mars_weather }}</p>
-
-    <h5>Mars Facts</h5>
-    {{ mars.html_factsTable | safe }}
-
-    <h5>Mars Hemisphere Images</h5>
-    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
-    {{ mars.hemisphere_image_urls[0].title }}
-    </img>
-
-    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
-    {{ mars.hemisphere_image_urls[1].title }}
-    </img>
-
-    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
-    {{ mars.hemisphere_image_urls[2].title }}
-    </img>
-
-    <img src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
-    {{ mars.hemisphere_image_urls[3].title }}
-    </img>
-
   </div>
+    
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card border-0 border-dark">
+          <div class="card-body">
+            <h3 class="card-title">The latest news from Mars is:</h3>
+            <h4>{{ mars.news_title }}</h4>
+            <h5>{{ mars.news_date }}</h3>
+            <p>{{ mars.news_p }}</p>
+          </img>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=row>
+      <div class="col-lg-8 col-md-6 col-sm-12"> 
+        <div class="card border-0 border-dark">
+          <div class="card-body">
+            <h3 class="card-title">Featured Mars image</h3>
+            <img class="img-fluid" src="{{ mars.featured_image_url }}" alt="{{ mars.featured_image_title}}">
+            <p>{{ mars.featured_image_title}}</p>
+          </img>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card border border-dark">
+          <div class="card-body">
+            <h4 class="card-title">Current weather on mars</h5>
+            <p class="card-text">{{ mars.mars_weather }}</p>
+          </div>
+        </div>
+        <div class="card border-0">
+          <div class="card-body">
+            <h4 class="card-title">Mars Facts</h4>
+            {{ mars.html_factsTable | safe }}
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <div class="row">
+      <div class="col-10">
+        <h3 class="text-center">Mars Hemispheres</h3>
+        <hr class="my-hr" style="width: 100%">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-10">
+        <div class="card border border-dark d-inline-block">
+          <div class="card-body">
+            <img class="img-fluid" src="{{ mars.hemisphere_image_urls[0].url }}" alt="{{ mars.hemisphere_image_urls[0].title }}">
+            </img>
+            <p>{{ mars.hemisphere_image_urls[0].title }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-10">
+        <div class="card border border-dark d-inline-block">
+          <div class="card-body">
+            <img class="img-fluid" src="{{ mars.hemisphere_image_urls[1].url }}" alt="{{ mars.hemisphere_image_urls[1].title }}">
+            </img>
+            <p>{{ mars.hemisphere_image_urls[1].title }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-10">
+        <div class="card border border-dark d-inline-block">
+          <div class="card-body">
+            <img class="img-fluid" src="{{ mars.hemisphere_image_urls[2].url }}" alt="{{ mars.hemisphere_image_urls[2].title }}">
+            </img>
+            <p>{{ mars.hemisphere_image_urls[2].title }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-10">
+        <div class="card border border-dark d-inline-block">
+          <div class="card-body">
+            <img class="img-fluid" src="{{ mars.hemisphere_image_urls[3].url }}" alt="{{ mars.hemisphere_image_urls[3].title }}">
+            </img>
+            <p>{{ mars.hemisphere_image_urls[3].title }}</p>
+          </div>
+        </div>          
+      </div>
+    </div>
   </div>
 </body>
 

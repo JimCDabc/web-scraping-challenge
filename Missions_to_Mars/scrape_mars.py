@@ -99,19 +99,31 @@ def scrapeMarsWeather(browser) :
     print("Scraping Mars Weather ...")
         
     weather_url = 'https://twitter.com/marswxreport?lang=en'
+    # Use 'https://mobile.twitter.com/MarsWxReport'
+    # weather_url = 'https://mobile.twitter.com/MarsWxReport'
     browser.visit(weather_url)
     time.sleep(1)
     
     # HTML object
     html = browser.html
+    # print("HTML retruned")
+    # print(html)
     # Parse HTML with Beautiful Soup
     soup = BeautifulSoup(html, 'html.parser')
+    #print("Soup")
+    #print(soup)
     
-    # results are returned as an iterable list
-    #tweets= soup.find_all('div', class_="tweet")
-    tweets= soup.find_all('div', class_="js-tweet-text-container")
-    
-    mars_weather = tweets[0].p.contents[0]
+    mars_weather = "No weather scraped"
+    paras = soup.find_all('p')
+    print(paras)
+    for para in paras :
+        print(para)
+        print("-------")
+        if "InSight sol" in para.text :
+            mars_weather = para.text
+            break    
+    print(mars_weather)
+
     weatherDict = { "mars_weather" : mars_weather}
     
     print(f"\nweatherDict = \n{weatherDict}\n")
