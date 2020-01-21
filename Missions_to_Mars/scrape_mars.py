@@ -115,10 +115,10 @@ def scrapeMarsWeather(browser) :
     
     mars_weather = "No weather scraped"
     paras = soup.find_all('p')
-    print(paras)
+    # print(paras)
     for para in paras :
-        print(para)
-        print("-------")
+        # print(para)
+        # print("-------")
         if "InSight sol" in para.text :
             mars_weather = para.text
             break    

@@ -1,24 +1,59 @@
-h3 {
-    font-weight: bold;
-}
+/* *****
+Note: Following CSS specity rules (see refernces), I attempted to use a 
+#my_override id one top level <body> element in html to override bootstrap styling,
 
-img {
+But these did not seem to work.  
+I also attempted some specifying custom classes in index.html and here also to no avail.
+
+Instead I placed inline styles directly in the html to override boostrap styling on text.  This won.
+
+This style.css file was irrelevant even when completely uncommented and no inline styles in index.html.  
+Bootstrap styling won every time, except when an inline style was applied in HTML.
+
+CSS Specificity References: 
+https://css-tricks.com/specifics-on-css-specificity/#article-header-id-1
+https://stackoverflow.com/questions/26133742/css-bootstrap-overrides-my-own-css 
+**** */
+
+/* @import boostrap.less;  */
+
+/* #my_override img {
     max-width: 100%;
     width: 100%;
     height: auto;
-    overflow: hidden;
-}
+} 
+*/
 
-.my-hr {
-    border: 2px solid blue !important;
+/* 
+#my_override .my-hr {
+    border: 2px solid blue;
     height: 100%;
     width: 100%;
 }
 
-/* .bighr {
-    background-color: dimgrey !important;
-    color: dimgrey !important;
-    border: solid 2px dimgrey !important;
-    height: 5px !important;
-    width: 100%
-} */
+#my_override h1 {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+#my_override h2 {
+    font-weight: bold;
+}
+
+#my_override  h3 {
+    font-weight: bold;
+}
+
+#my_override  h4 {
+    font-weight: bold;
+}
+
+#my_override  h5 {
+    font-weight: bold;
+}
+
+#my_override p  {
+    font-size: 1.5rem;
+    font-style: italic;
+} 
+*/
