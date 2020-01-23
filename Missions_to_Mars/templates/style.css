@@ -5,6 +5,9 @@ Note: Following CSS specity rules (see refernces), I attempted to use a
 But these did not seem to work.  
 I also attempted some specifying custom classes in index.html and here also to no avail.
 
+So either this file is not beeing loaded by the index.html (I don't have path right??)
+or don't quite understand the CSS specificity rules as the docs say.
+
 Instead I placed inline styles directly in the html to override boostrap styling on text.  This won.
 
 This style.css file was irrelevant even when completely uncommented and no inline styles in index.html.  
